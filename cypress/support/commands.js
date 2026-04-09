@@ -24,3 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add('login', (page, username, password) => {
+    page.visit()
+    page.fillUsername(username)
+    page.fillPassword(password)
+    page.submit()
+})

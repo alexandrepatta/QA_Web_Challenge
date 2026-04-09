@@ -36,13 +36,13 @@ This allowed me to keep the suite focused and stable within the proposed timefra
 
 The project is structured to support scalability and maintainability:
 
+```
 cypress/
 e2e/
 pages/
 fixtures/
 support/
-utils/
-
+```
 
 Key design choices:
 - Page Object Model to encapsulate selectors and actions
@@ -65,18 +65,6 @@ npm install
 
 ```
 
-- Install Cypress plugin [@cypress/grep](https://github.com/cypress-io/cypress/tree/develop/npm/grep)
-
-```bash
-npm install --save-dev @cypress/grep
-
-```
-- Install dotenv
-
-```bash
- npm install dotenv --save
-
- ```
 - Rename ".env.example" file to ".env"
 ---
 
@@ -96,7 +84,7 @@ npx cypress open
 
 ```
 
-Run specific tests by tag (if configured):
+Run specific tests by tag :
 
 ```bash
 npx cypress run --expose grepTags="@regression"

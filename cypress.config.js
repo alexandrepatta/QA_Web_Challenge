@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 require('dotenv').config();
 
-const ENV = process.env.ENV 
+const ENV = process.env.ENV || 'dev'
 
 const baseUrls = {
   dev: process.env.DEV_URL,

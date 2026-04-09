@@ -26,19 +26,11 @@ class WebTablesPage {
   }
 
   getTable() {
-    return cy.get('table tbody tr')
+    return cy.get('table')
   }
 
-  deleteUser() {
-    cy.get('[title="Delete"]').click()
-  }
-
-  getNoDataMessage() {
-    return cy.contains('No rows found')
-  }
-
-  getNumPages(){
-    return cy.get('strong')
+  deleteUser(email) {
+    cy.contains('tr', email).find('[title="Delete"]').click()
   }
 }
 

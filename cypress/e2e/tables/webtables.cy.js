@@ -1,6 +1,6 @@
 import WebTablesPage from '../../pages/WebTablesPage'
 
-describe('Web Tables - User CRUD Flow', () => {
+describe('Web Tables - User CRUD Flow', { tags: ['@regression', '@table'] }, () => {
 
   const user = {
     firstName: 'Alexandre',
@@ -21,7 +21,7 @@ describe('Web Tables - User CRUD Flow', () => {
     WebTablesPage.submit()
 
     // Searching for created user
-    WebTablesPage.search(user.firstName)
+    WebTablesPage.search(user.email)
 
     // Validating presence in table
     WebTablesPage.getTable()
@@ -30,18 +30,9 @@ describe('Web Tables - User CRUD Flow', () => {
       .and('contain', user.email)
 
     // Deleting user
-    WebTablesPage.deleteUser()
+    WebTablesPage.deleteUser(user.email)
 
-    // Validating removal and validating number of pages
-    WebTablesPage.getNumPages().then(($el) => {
-      if ($el.text().includes("1 of 0")) {
-        return
-      } else {
-        WebTablesPage.getTable()
-        .should('not.contain', user.firstName)
-        .and('not.contain', user.lastName)
-        .and('not.contain', user.email)
-      }
-    })
+    // Validating removal
+    WebTablesPage.getTable().should('not.contain', user.email)
   })
 })

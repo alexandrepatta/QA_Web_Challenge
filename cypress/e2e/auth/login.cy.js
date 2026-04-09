@@ -4,10 +4,8 @@ import { getEnv } from '../../support/env'
 describe('Login Tests', { tags: ['@regression', '@auth'] }, () => {
 
   it('should login successfully with valid credentials', () => {
-    LoginPage.login(
-     getEnv('username'),
-     getEnv('password')
-    )
+
+    cy.login(LoginPage, getEnv('username'), getEnv('password'))
     cy.url().should('include', '/profile')
   })
 
@@ -15,10 +13,7 @@ describe('Login Tests', { tags: ['@regression', '@auth'] }, () => {
 
     cy.intercept('POST', '**/Account/v1/Login').as('loginRequest')
 
-    LoginPage.login(
-     getEnv('username'),
-     getEnv('password')
-    )
+    cy.login(LoginPage, getEnv('username'), getEnv('password'))
 
     cy.wait('@loginRequest').then((interception) => {
       expect(interception.response.statusCode).to.eq(200)
@@ -26,7 +21,7 @@ describe('Login Tests', { tags: ['@regression', '@auth'] }, () => {
   })
   
   it('should display an error message with invalid credentials', () => {
-    LoginPage.login('invalidUser', 'invalidPassword')
+    cy.login(LoginPage, 'invalidUser', 'invalidPassword')
 
     LoginPage.getErrorMessage()
       .should('contain', 'Invalid username or password')

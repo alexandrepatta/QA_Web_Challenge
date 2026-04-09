@@ -45,8 +45,8 @@ To keep the codebase clean and scalable:
 ## Test Results
 
 - Total tests: 5  
-- Passed: XX  
-- Failed: XX  
+- Passed: 05  
+- Failed: 00  
 
 Artifacts generated during execution:
 
