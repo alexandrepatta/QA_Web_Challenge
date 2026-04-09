@@ -77,7 +77,7 @@ npm install --save-dev @cypress/grep
  npm install dotenv --save
 
  ```
-Rename ".env.example" file to ".env"
+- Rename ".env.example" file to ".env"
 ---
 
 ### Running Tests
